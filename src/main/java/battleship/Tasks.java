@@ -32,7 +32,7 @@ public class Tasks {
 	private static final String MAPA = "mapa";
 	private static final String STATUS = "estado";
 	private static final String SIMULA = "simula";
-
+	private static final String HISTORICO = "historico";
 	/**
 	 * This task also tests the fighting element of a round of three shots
 	 */
@@ -73,6 +73,7 @@ public class Tasks {
 						game.printMyBoard(true, false);
 
 						if (game.getRemainingShips() == 0) {
+							ScoreboardManager.saveScore(game);
 							game.over();
 							System.exit(0);
 						}
@@ -85,13 +86,14 @@ public class Tasks {
 							myFleet.printStatus();
 							game.printMyBoard(true, false);
 							try {
-								Thread.sleep(3000);
+								Thread.sleep(50);
 							} catch (InterruptedException e) {
 								Thread.currentThread().interrupt(); // Best practice: restore interrupt status
 							}
 						}
 
 						if (game.getRemainingShips() == 0) {
+							ScoreboardManager.saveScore(game);
 							game.over();
 							System.exit(0);
 						}
@@ -101,6 +103,9 @@ public class Tasks {
 					if (game != null)
 						game.printMyBoard(true, true);
 					break;
+				case HISTORICO:
+					ScoreboardManager.printScoreboard();
+					break;
                 case AJUDA:
                     menuHelp();
                     break;
@@ -109,6 +114,9 @@ public class Tasks {
 			}
 			System.out.print("> ");
 			command = in.next();
+		}
+		if (game != null) {
+			ScoreboardManager.saveScore(game); // Grava a desistência
 		}
 		System.out.println(GOODBYE_MESSAGE);
 	}
@@ -125,6 +133,7 @@ public class Tasks {
 		System.out.println("- " + MAPA + ": Exibe o mapa da frota.");
 		System.out.println("- " + RAJADA + ": Realiza uma rajada de disparos.");
 		System.out.println("- " + SIMULA + ": Simula um jogo completo.");
+		System.out.println("- " + HISTORICO + ": Mostra o histórico de jogos passados (Scoreboard).");
 		System.out.println("- " + TIROS + ": Lista os tiros válidos realizados (* = tiro em navio, o = tiro na água)");
 		System.out.println("- " + DESISTIR + ": Encerra o jogo.");
 		System.out.println("===============================================================");
