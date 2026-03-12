@@ -21,6 +21,8 @@ public class Main
 			for (int j = 0; j < 10; j++) {
 				exemplo[i][j] = '~';
 			}
+
+
 		}
 
 		TabuleiroGrafico tg = new TabuleiroGrafico();
