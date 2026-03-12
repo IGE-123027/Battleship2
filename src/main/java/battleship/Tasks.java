@@ -2,7 +2,6 @@ package battleship;
 
 import java.util.Scanner;
 
-import org.apache.commons.lang3.time.StopWatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +40,6 @@ public class Tasks {
 
 		IFleet myFleet = null;
 		IGame game = null;
-		StopWatch stopWatch = new StopWatch();
 		menuHelp();
 
 		System.out.print("> ");
@@ -70,11 +68,7 @@ public class Tasks {
 					break;
 				case RAJADA:
 					if (game != null) {
-						stopWatch.reset();
-						stopWatch.start();
 						game.readEnemyFire(in);
-						stopWatch.stop();
-						System.out.println("⏱️ Tempo desta jogada: " + stopWatch.formatTime());
 						myFleet.printStatus();
 						game.printMyBoard(true, false);
 
@@ -86,8 +80,6 @@ public class Tasks {
 					break;
 				case SIMULA:
 					if (game != null) {
-						stopWatch.reset();
-						stopWatch.start();
 						while (game.getRemainingShips() > 0){
 							game.randomEnemyFire();
 							myFleet.printStatus();
@@ -95,11 +87,9 @@ public class Tasks {
 							try {
 								Thread.sleep(3000);
 							} catch (InterruptedException e) {
-								Thread.currentThread().interrupt();
+								Thread.currentThread().interrupt(); // Best practice: restore interrupt status
 							}
 						}
-						stopWatch.stop();
-						System.out.println("⏱️ Tempo total do jogo: " + stopWatch.formatTime());
 
 						if (game.getRemainingShips() == 0) {
 							game.over();
@@ -111,9 +101,9 @@ public class Tasks {
 					if (game != null)
 						game.printMyBoard(true, true);
 					break;
-				case AJUDA:
-					menuHelp();
-					break;
+                case AJUDA:
+                    menuHelp();
+                    break;
 				default:
 					System.out.println("Que comando é esse??? Repete ...");
 			}
@@ -139,7 +129,6 @@ public class Tasks {
 		System.out.println("- " + DESISTIR + ": Encerra o jogo.");
 		System.out.println("===============================================================");
 	}
-
 	/**
 	 * This operation allows the build up of a fleet, given user data
 	 *
@@ -151,7 +140,7 @@ public class Tasks {
 		assert in != null;
 
 		Fleet fleet = new Fleet();
-		int i = 0;
+		int i = 0; // i represents the total of successfully created ships
 		while (i < Fleet.FLEET_SIZE) {
 			IShip s = readShip(in);
 			if (s != null) {
@@ -207,30 +196,35 @@ public class Tasks {
 	 * @return The classic position that has been read
 	 */
 	public static IPosition readClassicPosition(@NotNull Scanner in) {
+		// Verifica se ainda há tokens disponíveis
 		if (!in.hasNext()) {
 			throw new IllegalArgumentException("Nenhuma posição válida encontrada!");
 		}
 
-		String part1 = in.next();
+		String part1 = in.next(); // Primeiro token
 		String part2 = null;
 
 		if (in.hasNextInt()) {
-			part2 = in.next();
+			part2 = in.next(); // Segundo token, se disponível
 		}
 
 		String input = (part2 != null) ? part1 + part2 : part1;
+
+		// Normalizar o input para tratar letras maiúsculas e minúsculas
 		input = input.toUpperCase();
 
+		// Verificar os dois formatos possíveis: compactos e com espaço
 		if (input.matches("[A-Z]\\d+")) {
-			char column = input.charAt(0);
-			int row = Integer.parseInt(input.substring(1));
+			char column = input.charAt(0); // Extrair a coluna
+			int row = Integer.parseInt(input.substring(1)); // Extrair a linha
 			return new Position(column, row);
 		} else if (part2 != null && part1.matches("[A-Z]") && part2.matches("\\d+")) {
-			char column = part1.charAt(0);
-			int row = Integer.parseInt(part2);
+			char column = part1.charAt(0); // Extrair a coluna
+			int row = Integer.parseInt(part2); // Extrair a linha
 			return new Position(column, row);
 		} else {
 			throw new IllegalArgumentException("Formato inválido. Use 'A3', 'A 3' ou similar.");
 		}
 	}
+
 }
