@@ -16,13 +16,15 @@ public class Main
 	 */
 	public static void main(String[] args) {
 
+		System.out.println("***  Battleship  ***");
+
+		DatabaseManager.setupDatabase();
+
 		char[][] exemplo = new char[10][10];
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				exemplo[i][j] = '~';
 			}
-
-
 		}
 
 		TabuleiroGrafico tg = new TabuleiroGrafico();

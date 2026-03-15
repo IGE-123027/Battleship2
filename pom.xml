@@ -32,6 +32,8 @@
 		<allure.version>2.31.0</allure.version>
 
 		<jetbrains.annotations.version>26.1.0</jetbrains.annotations.version>
+
+		<commons.lang3.version>3.14.0</commons.lang3.version>
 	</properties>
 
 	<dependencies>
@@ -69,6 +71,13 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Redirecionar SLF4J para Log4j2 (elimina warnings SLF4J) -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>${apache.log4j.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -79,6 +88,12 @@
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-java-commons-test</artifactId>
 			<version>${allure.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -92,6 +107,19 @@
 			<groupId>com.googlecode.lanterna</groupId>
 			<artifactId>lanterna</artifactId>
 			<version>3.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.9</version>
+		</dependency>
+
+		<!-- Apache Commons Lang - Timer -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -129,6 +157,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
