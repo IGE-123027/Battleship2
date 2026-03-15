@@ -76,6 +76,8 @@ public class Tasks {
 							game.over();
 							System.exit(0);
 						}
+
+
 					}
 					break;
 				case SIMULA:
