@@ -1,4 +1,5 @@
-https://youtu.be/OE_SfcVMAu8
+Gravação do jogo a funcuionar: https://youtu.be/OE_SfcVMAu8
+Gravação do jogo do LLM: https://youtu.be/77TVOWuy2M4
 
 # ⚓ Battleship 2.0
 
