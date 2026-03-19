@@ -94,6 +94,9 @@ public class Tasks {
 						}
 
 						if (game.getRemainingShips() == 0) {
+							System.out.println("Simulação terminou. A tentar gravar o scoreboard...");
+							ScoreboardManager.saveScore(game);
+							System.out.println("Gravação concluída. A encerrar...");
 							game.over();
 							System.exit(0);
 						}
