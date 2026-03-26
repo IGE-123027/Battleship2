@@ -1,4 +1,4 @@
-# Aluno: [Teu Número] - [Teu Nome]
+# Aluno: 122485 - António Koenders
 name: Qodana Code Smell Check
 on: [push, pull_request]
 
