@@ -1,0 +1,13 @@
+# Aluno: [Teu Número] - [Teu Nome]
+name: Qodana Code Smell Check
+on: [push, pull_request]
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@v2023.2
+        with:
+          args: --fail-threshold,0
