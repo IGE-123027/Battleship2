@@ -1,0 +1,50 @@
+# IGE-123018 - Diogo
+# Code Smell: Dispersed Coupling
+# Detection strategy based on "Object-Oriented Metrics in Practice" (Lanza & Marinescu)
+# Metrics: CDISP >= 0.5, CINT >= 8, MND >= 2
+
+name: Dispersed Coupling Detection
+
+on:
+  push:
+    branches: [ main, Cronómetro ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  dispersed-coupling-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Run Qodana Analysis
+        uses: JetBrains/qodana-action@main
+        with:
+          args: >
+            --property=idea.inspection.classes.to.run=MethodCouplingInspection
+            --fail-threshold 0
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+
+      - name: Upload Qodana Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: dispersed-coupling-report
+          path: ${{ runner.temp }}/qodana/results
