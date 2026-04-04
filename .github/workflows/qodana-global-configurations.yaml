@@ -1,0 +1,13 @@
+version: "1.0"
+
+profile:
+  name: qodana.recommended
+
+include:
+  - name: All
+
+exclude:
+  - name: Generated code
+    paths:
+      - target
+      - build
