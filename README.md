@@ -1,5 +1,6 @@
 Gravação do jogo a funcionar: https://youtu.be/MdS-tlItD_Q
 Gravação do jogo do LLM: https://youtu.be/77TVOWuy2M4
+Este projeto utiliza GitHub Actions para automatizar a execução de testes unitários (JUnit 5) em cada integração no ramo main.
 
 Prompt do LLM: Vais jogar Batalha Naval dos Descobrimentos contra um adversário humano.
 O tabuleiro tem linhas A–J e colunas 1–10.
@@ -83,6 +84,7 @@ Responde APENAS com o diário actualizado (resumido) e a nova rajada.
 
 # ⚓ Battleship 2.0
 
+[![Java CI with Maven](https://github.com/IGE-123027/Battleship2/actions/workflows/maven.yml/badge.svg)](https://github.com/IGE-123027/Battleship2/actions/workflows/maven.yml)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Java Version](https://img.shields.io/badge/Java-17%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
