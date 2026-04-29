@@ -1,4 +1,5 @@
-name: Java CI with Maven
+# Workflow para correr Testes Unitários com Maven
+name: Java with Maven
 
 on:
   push:
@@ -20,6 +21,5 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Run Tests with Maven
-      # Este é o comando principal que o guião exige
+    - name: Run Unit Tests with Maven
       run: mvn -B test --file pom.xml

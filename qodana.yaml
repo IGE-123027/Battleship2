@@ -1,0 +1,16 @@
+version: "1.0"
+
+profile:
+  name: qodana.starter
+
+include:
+  - name: MethodWithTooManyParameters
+  - name: ConstructorWithTooManyParameters
+
+projectJDK: "25"
+
+failureConditions:
+  severityThresholds:
+    any: 0
+
+linter: jetbrains/qodana-jvm:2025.2
