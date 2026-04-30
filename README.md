@@ -86,7 +86,7 @@ Responde APENAS com o diário actualizado (resumido) e a nova rajada.
 
 [![Java CI with Maven](https://github.com/IGE-123027/Battleship2/actions/workflows/maven.yml/badge.svg)](https://github.com/IGE-123027/Battleship2/actions/workflows/maven.yml)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Java Version](https://img.shields.io/badge/Java-17%2B-blue)
+![Java Version](https://img.shields.io/badge/Java-21-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 > A modern take on the classic naval warfare game, designed for the XVII century setting with updated software engineering patterns.
