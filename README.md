@@ -1,3 +1,6 @@
+Na ficha 3 o IGE_123018 não conseguiu utilizar o SonarQube por não ser o dono do repositório.
+
+
 Gravação do jogo a funcionar: https://youtu.be/MdS-tlItD_Q
 Gravação do jogo do LLM: https://youtu.be/77TVOWuy2M4
 Este projeto utiliza GitHub Actions para automatizar a execução de testes unitários (JUnit 5) em cada integração no ramo main.
