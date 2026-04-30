@@ -217,6 +217,18 @@ mvn test
 
 ---
 
+---
+
+## ⚙️ Integração Contínua (CI)
+Este projeto utiliza **GitHub Actions** para automatizar a validação do código. O workflow [Java with Maven](.github/workflows/testes-unitarios.yml) foi configurado para:
+
+*   **JDK:** Executar em **Java 21** (Temurin distribution).
+*   **Trigger:** Correr automaticamente em cada **Push** ou **Pull Request** na branch `main`.
+*   **Comando:** Executar a suite completa de testes unitários via `mvn test`.
+*   **Estado Atual:** O workflow está funcional e a monitorizar a qualidade do código, reportando falhas de lógica detetadas nos testes unitários.
+
+---
+
 ## 🤝 Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
 
