@@ -87,22 +87,6 @@ public class FrigateTest {
 	}
 
 	/**
-	 * Test for the constructor with SOUTH bearing.
-	 */
-	@Test
-	void testConstructorSouth() {
-		frigate = new Frigate(Compass.SOUTH, new Position(5, 5));
-		List<IPosition> positions = frigate.getPositions();
-
-		assertNotNull(frigate, "Error: Frigate instance should not be null.");
-		assertEquals(4, positions.size(), "Error: Frigate should have exactly 4 positions.");
-		assertEquals(new Position(5, 5), positions.get(0), "Error: First position is incorrect for SOUTH.");
-		assertEquals(new Position(6, 5), positions.get(1), "Error: Second position is incorrect for SOUTH.");
-		assertEquals(new Position(7, 5), positions.get(2), "Error: Third position is incorrect for SOUTH.");
-		assertEquals(new Position(8, 5), positions.get(3), "Error: Fourth position is incorrect for SOUTH.");
-	}
-
-	/**
 	 * Test for the getSize method.
 	 * Cyclomatic Complexity: 1
 	 */

@@ -1,0 +1,20 @@
+# Número: 123027 - Nome: Francisco Antunes
+name: Qodana Code Smell Detection (Long Method)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Qodana Scan
+        uses: JetBrains/qodana-action@v2023.2
+        with:
+          # O argumento --fail-threshold 0 faz o workflow falhar (quality gate) se encontrar problemas
+          args: --fail-threshold, 0
