@@ -137,6 +137,42 @@ import java.util.ArrayList;
 			assertEquals(ship2, floatingShips.get(0), "Error: The floating ship should match the expected result.");
 		}
 
+	@Test
+	void testGetSunkShips() {
+		IShip ship1 = new Barge(Compass.NORTH, new Position(1, 1));
+		IShip ship2 = new Caravel(Compass.NORTH, new Position(2, 2));
+		fleet.addShip(ship1);
+		fleet.addShip(ship2);
+		ship1.sink();
+		ship2.sink();
+		List<IShip> sunk = fleet.getSunkShips();
+		assertEquals(2, sunk.size());
+		assertTrue(sunk.contains(ship1));
+		assertTrue(sunk.contains(ship2));
+	}
+
+	@Test
+	void testPrintShipsByCategory() {
+		IShip ship = new Barge(Compass.NORTH, new Position(1, 1));
+		fleet.addShip(ship);
+		assertDoesNotThrow(() -> fleet.printShipsByCategory("Barca"));
+	}
+
+	@Test
+	void testPrintFloatingShips() {
+		IShip ship = new Barge(Compass.NORTH, new Position(1, 1));
+		fleet.addShip(ship);
+		assertDoesNotThrow(fleet::printFloatingShips);
+	}
+
+	@Test
+	void testPrintAllShips() {
+		IShip ship = new Barge(Compass.NORTH, new Position(1, 1));
+		fleet.addShip(ship);
+		assertDoesNotThrow(() -> fleet.printAllShips());
+	}
+
+
 		/**
 		 * Test for the shipAt method.
 		 * Cyclomatic Complexity: 2

@@ -225,4 +225,104 @@ public class ShipTest {
     void testGetRightMostPos() {
         assertEquals(5, ship.getRightMostPos(), "Error: The rightmost position should be 5.");
     }
+
+    // --- TESTES ADICIONAIS PARA COBERTURA TOTAL --- //
+
+    @Test
+    void testGetTopMostPosMultiplePositions() {
+        Ship ship = new Carrack(Compass.NORTH, new Position(6, 5));
+        // NORTH: (6,5) → (5,5) → (4,5)
+        assertEquals(4, ship.getTopMostPos());
+    }
+
+    @Test
+    void testGetBottomMostPosMultiplePositions() {
+        Ship ship = new Carrack(Compass.SOUTH, new Position(4, 5));
+        // SOUTH: (4,5) → (5,5) → (6,5)
+        assertEquals(6, ship.getBottomMostPos());
+    }
+
+    @Test
+    void testGetLeftMostPosEastBearing() {
+        Ship ship = new Carrack(Compass.EAST, new Position(5, 3));
+        // EAST: (5,3) → (5,4) → (5,5)
+        assertEquals(3, ship.getLeftMostPos());
+    }
+
+    @Test
+    void testGetRightMostPosWestBearing() {
+        Ship ship = new Carrack(Compass.WEST, new Position(5, 7));
+        // WEST: (5,7) → (5,6) → (5,5)
+        assertEquals(7, ship.getRightMostPos());
+    }
+
+    @Test
+    void testGetAdjacentPositions() {
+        Ship ship = new Caravel(Compass.NORTH, new Position(5, 5));
+        List<IPosition> adjacent = ship.getAdjacentPositions();
+        assertFalse(adjacent.isEmpty(), "Should have adjacent positions");
+        for (IPosition pos : ship.getPositions()) {
+            assertFalse(adjacent.contains(pos), "Adjacent shouldn't include ship positions");
+        }
+    }
+
+    @Test
+    void testShootMiddlePosition() {
+        Ship ship = new Caravel(Compass.NORTH, new Position(5, 5));
+        // Caravel: (5,5) → (4,5)
+        ship.shoot(new Position(4, 5)); // Atira na segunda posição
+        assertFalse(ship.getPositions().get(0).isHit());
+        assertTrue(ship.getPositions().get(1).isHit());
+    }
+
+    @Test
+    void testSinkMethod() {
+        Ship ship = new Caravel(Compass.NORTH, new Position(5, 5));
+        ship.sink(); // Dispara em TODAS as posições
+        for (IPosition pos : ship.getPositions()) {
+            assertTrue(pos.isHit(), "All positions should be hit after sink");
+        }
+        assertFalse(ship.stillFloating());
+    }
+
+    @Test
+    void testBuildShipCaravela() {
+        Ship ship = Ship.buildShip("caravela", Compass.NORTH, new Position(5, 5));
+        assertNotNull(ship);
+        assertTrue(ship instanceof Caravel);
+    }
+
+    @Test
+    void testBuildShipNau() {
+        Ship ship = Ship.buildShip("nau", Compass.NORTH, new Position(5, 5));
+        assertNotNull(ship);
+        assertTrue(ship instanceof Carrack);
+    }
+
+    @Test
+    void testBuildShipBarca() {
+        Ship ship = Ship.buildShip("barca", Compass.NORTH, new Position(5, 5));
+        assertNotNull(ship);
+        assertTrue(ship instanceof Barge);
+    }
+
+    @Test
+    void testBuildShipFragata() {
+        Ship ship = Ship.buildShip("fragata", Compass.NORTH, new Position(5, 5));
+        assertNotNull(ship);
+        assertTrue(ship instanceof Frigate);
+    }
+
+    @Test
+    void testBuildShipGaleao() {
+        Ship ship = Ship.buildShip("galeao", Compass.NORTH, new Position(5, 5));
+        assertNotNull(ship);
+        assertTrue(ship instanceof Galleon);
+    }
+
+    @Test
+    void testBuildShipInvalid() {
+        Ship ship = Ship.buildShip("invalid", Compass.NORTH, new Position(5, 5));
+        assertNull(ship); // default case
+    }
 }
