@@ -1,3 +1,5 @@
+Na ficha 4 o IGE_123018 aceitou o próprio pull request.
+
 Na ficha 3 o IGE_123018 não conseguiu utilizar o SonarQube por não ser o dono do repositório.
 
 
