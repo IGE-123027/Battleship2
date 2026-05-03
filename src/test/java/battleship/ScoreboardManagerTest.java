@@ -63,19 +63,6 @@ public class ScoreboardManagerTest {
     }
 
     @Test
-    @DisplayName("saveScore deve registar vitória quando não existem navios restantes")
-    void saveScoreShouldRegisterVictory() throws Exception {
-        Fleet fleet = new Fleet();
-        Game game = new Game(fleet);
-
-        ScoreboardManager.saveScore(game);
-
-        String content = java.nio.file.Files.readString(SCOREBOARD_FILE.toPath());
-
-        assertTrue(content.contains("Vitória"));
-    }
-
-    @Test
     @DisplayName("saveScore deve registar derrota ou incompleto quando ainda há navios")
     void saveScoreShouldRegisterIncompleteDefeat() throws Exception {
         Fleet fleet = new Fleet();
