@@ -48,6 +48,7 @@ public class ScoreboardManagerTest {
         assertTrue(SCOREBOARD_FILE.length() > 0);
     }
 
+    //Não consegui meter o save victory a funcionar
     @Test
     @DisplayName("saveScore deve adicionar nova linha quando o ficheiro já existe")
     void saveScoreShouldAppendWhenFileAlreadyExists() {
