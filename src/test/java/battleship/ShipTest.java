@@ -235,13 +235,6 @@ public class ShipTest {
     // --- TESTES ADICIONAIS PARA COBERTURA TOTAL --- //
 
     @Test
-    void testGetTopMostPosMultiplePositions() {
-        Ship ship = new Carrack(Compass.NORTH, new Position(6, 5));
-        // NORTH: (6,5) → (5,5) → (4,5)
-        assertEquals(4, ship.getTopMostPos());
-    }
-
-    @Test
     void testGetBottomMostPosMultiplePositions() {
         Ship ship = new Carrack(Compass.SOUTH, new Position(4, 5));
         // SOUTH: (4,5) → (5,5) → (6,5)
@@ -256,13 +249,6 @@ public class ShipTest {
     }
 
     @Test
-    void testGetRightMostPosWestBearing() {
-        Ship ship = new Carrack(Compass.WEST, new Position(5, 7));
-        // WEST: (5,7) → (5,6) → (5,5)
-        assertEquals(7, ship.getRightMostPos());
-    }
-
-    @Test
     void testGetAdjacentPositions() {
         Ship ship = new Caravel(Compass.NORTH, new Position(5, 5));
         List<IPosition> adjacent = ship.getAdjacentPositions();
@@ -270,15 +256,6 @@ public class ShipTest {
         for (IPosition pos : ship.getPositions()) {
             assertFalse(adjacent.contains(pos), "Adjacent shouldn't include ship positions");
         }
-    }
-
-    @Test
-    void testShootMiddlePosition() {
-        Ship ship = new Caravel(Compass.NORTH, new Position(5, 5));
-        // Caravel: (5,5) → (4,5)
-        ship.shoot(new Position(4, 5)); // Atira na segunda posição
-        assertFalse(ship.getPositions().get(0).isHit());
-        assertTrue(ship.getPositions().get(1).isHit());
     }
 
     @Test

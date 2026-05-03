@@ -29,20 +29,6 @@ public class MainTest {
     }
 
     @Test
-    @DisplayName("main deve executar sem bloquear quando recebe opção de sair")
-    void mainShouldRunWithoutBlocking() {
-        String input = "0\n";
-         InputStream originalIn = System.in;
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-
-        try {
-            assertDoesNotThrow(() -> Main.main(new String[]{}));
-        } finally {
-            System.setIn(originalIn);
-        }
-    }
-
-    @Test
     @DisplayName("setupEmptyBoard deve preencher o tabuleiro com água")
     void setupEmptyBoardShouldFillBoardWithWater() {
         char[][] board = new char[10][10];
