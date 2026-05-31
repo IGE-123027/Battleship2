@@ -1,5 +1,11 @@
-FROM eclipse-temurin:21-jdk-jammy
+# Usar a imagem oficial do Java
+FROM eclipse-temurin:21-jre-alpine
+
+# Definir a pasta de trabalho dentro do contentor
 WORKDIR /app
+
+# Copiar APENAS o ficheiro executável correto gerado na tua máquina
 COPY target/BattleshipGamePlayer-2.0.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-cp", "app.jar", "battleship.Main"]
+
+# Comando de arranque do jogo
+ENTRYPOINT ["java", "-jar", "app.jar"]
