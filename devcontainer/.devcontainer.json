@@ -1,0 +1,20 @@
+{
+  "name": "Battleship Java 21 Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "ms-azuretools.vscode-docker",
+        "yzhang.markdown-all-in-one",
+        "cschleiden.vscode-github-actions"
+      ]
+    },
+    "jetbrains": {
+      "backend": "IntelliJ"
+    }
+  },
+  "remoteUser": "root"
+}
