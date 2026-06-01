@@ -1,4 +1,4 @@
-Na ficha 6 não consiguimos passar da alínea B porque o dono do repositório já não está a fazer a cadeira e não consigimos ter permissões de administrador, e como consequência, acesso às settings/Pages. 
+Na ficha 6 não consiguimos passar da alínea G porque o dono do repositório já não está a fazer a cadeira e não consigimos ter permissões de administrador, e como consequência, acesso às settings/Pages. 
 
 _______________________________________________________
 
