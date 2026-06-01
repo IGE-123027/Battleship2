@@ -1,5 +1,5 @@
 Na ficha 6 não consiguimos passar da alínea G porque o dono do repositório já não está a fazer a cadeira e não consigimos ter permissões de administrador, e como consequência, acesso às settings/Pages. 
-
+Na alínea H era necessária também intervenção por parte do dono do repositório.
 _______________________________________________________
 
 Na ficha 4 o IGE_123018 aceitou o próprio pull request.
