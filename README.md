@@ -1,4 +1,9 @@
+Na ficha 6 não consiguimos passar da alínea B porque o dono do repositório já não está a fazer a cadeira e não consigimos ter permissões de administrador, e como consequência, acesso às settings/Pages. 
+
+_______________________________________________________
+
 Na ficha 4 o IGE_123018 aceitou o próprio pull request.
+
 
 Na ficha 3 o IGE_123018 não conseguiu utilizar o SonarQube por não ser o dono do repositório.
 
